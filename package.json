@@ -5,5 +5,8 @@
   "main": "src/app.ts",
   "repository": "git@github.com:My42/create-RRS-project.git",
   "author": "<vincent.mesquita@epitech.eu>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^12.6.8"
+  }
 }
