@@ -1,3 +1,9 @@
+*.js
+!_*.js
+
+*.js.map
+!_*.js.map
+
 # Logs
 logs
 *.log
