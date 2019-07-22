@@ -11,7 +11,7 @@ const mkdir = async (directories : string[]) => {
                 await exec(`md ${tmp.join(' ')}`);
                 break;
             default:
-                console.log(await exec(`mkdir ${tmp.join(' ')}`));
+                await exec(`mkdir ${tmp.join(' ')}`);
         }
     } catch (e) {
         throw new CommandLineException(e.message);
