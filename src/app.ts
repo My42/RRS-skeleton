@@ -1,5 +1,5 @@
-import { createReactApp } from './CommandLines';
-import { Options } from './enums';
+import Options from './enums/Options';
+import { step1 } from './steps';
 
 const isAnOption = arg => arg.startsWith('--');
 
@@ -16,7 +16,7 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
     console.log({ appName, path, options });
     (async function() {
         try {
-            await createReactApp(appName, path);
+            await step1(appName, path); // create react-app
         } catch (e) {
             console.log(e.message);
             process.exit(1);
