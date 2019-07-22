@@ -1,6 +1,6 @@
 import exec from './exec';
-import createReactApp from './createReactApp';
 
-export  { createReactApp };
+export { default as createReactApp } from './createReactApp'
+export { default as mkdir } from './mkdir';
 
 export default exec;
