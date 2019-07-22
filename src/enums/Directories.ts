@@ -7,6 +7,7 @@ const enum Directories {
     PAGES = 'pages',
     REDUX = 'redux',
     SAGA = 'saga',
+    SRC = 'src',
 }
 
 export default Directories;

@@ -1,5 +1,5 @@
 import Options from './enums/Options';
-import { step1 } from './steps';
+import {step1, step2 } from './steps';
 
 const isAnOption = arg => arg.startsWith('--');
 
@@ -17,6 +17,7 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
     (async function() {
         try {
             await step1(appName, path); // create react-app
+            await step2(`${path}/${appName}`); // create react-app
         } catch (e) {
             console.log(e.message);
             process.exit(1);
