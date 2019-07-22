@@ -5,7 +5,7 @@ export default async function (appPath : string) : Promise<void> {
     const srcPath = `${appPath}/${Directories.SRC}`;
     const directories = [
         `${srcPath}/${Directories.FEATURES}`,
-        `${srcPath}/${Directories.REDUX}`,
+        `${srcPath}/${Directories.REDUCERS}`,
         `${srcPath}/${Directories.SAGA}`,
         `${srcPath}/${Directories.UX}`,
         `${srcPath}/${Directories.UX}/${Directories.ATOMS}`,
