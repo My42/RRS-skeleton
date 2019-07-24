@@ -2,6 +2,7 @@ import Options from './enums/Options';
 import {
     createReactApp,
     updateSkeleton,
+    installDependencies,
 } from './steps';
 
 const isAnOption = arg => arg.startsWith('--');
@@ -26,6 +27,7 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
     const steps = [
         () => createReactApp(appName, path),
         () => updateSkeleton(appPath),
+        () => installDependencies(appPath)
     ];
 
     console.log({ appName, path, options });
