@@ -14,5 +14,5 @@ export default async function (appPath : string) : Promise<void> {
         `${srcPath}/${Directories.UX}/${Directories.PAGES}`,
     ];
     await mkdir(directories);
-    console.log("#2 App's skeleton updated");
+    console.log("¤ App's skeleton updated");
 }
