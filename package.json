@@ -6,6 +6,9 @@
   "repository": "git@github.com:My42/create-RRS-project.git",
   "author": "<vincent.mesquita@epitech.eu>",
   "license": "MIT",
+  "scripts": {
+    "start": "tsc && node src/app.js"
+  },
   "dependencies": {
     "@types/lodash": "^4.14.136",
     "@types/node": "^12.6.8",
