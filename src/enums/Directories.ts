@@ -6,7 +6,7 @@ const enum Directories {
     ORGANISMS = 'organisms',
     PAGES = 'pages',
     REDUCERS = 'reducers',
-    SAGA = 'saga',
+    SAGA = 'sagas',
     SRC = 'src',
 }
 
