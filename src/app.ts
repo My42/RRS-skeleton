@@ -4,6 +4,8 @@ import {
     updateSkeleton,
     installDependencies,
     createReduxFiles,
+    createSagaFiles,
+    updateAppIndex,
 } from './steps';
 
 const isAnOption = arg => arg.startsWith('--');
@@ -30,6 +32,8 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
         () => updateSkeleton(appPath),
         () => installDependencies(appPath),
         () => createReduxFiles(appPath),
+        () => createSagaFiles(appPath),
+        () => updateAppIndex(appPath),
     ];
 
     console.log({ appName, path, options });

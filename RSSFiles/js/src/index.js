@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
+import sagas from './sagas'
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +17,8 @@ const store = createStore(
 reducers,
 composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
+
+sagaMiddleware.run(sagas);
 
 ReactDOM.render(
 <Provider store={store}>
