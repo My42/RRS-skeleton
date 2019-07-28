@@ -27,6 +27,7 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
     `);
 } else {
     const appPath : string = `${path}/${appName}`;
+    let seconds : number = 0;
     const steps = [
         () => createReactApp(appName, path),
         () => updateSkeleton(appPath),
@@ -36,10 +37,14 @@ Create a skeleton of a react project ready for hacking with redux & saga configu
         () => updateAppIndex(appPath),
     ];
 
+    const intervalId = setInterval(() => { seconds += 1 }, 1000);
     console.log({ appName, path, options });
-
     asyncForEach(steps, (step) => step())
-        .then(() => console.log('Happy hacking!')) // TODO: add how many seconds it took
+        .then(() => {
+            console.log('Happy hacking!');
+            console.log(`done in ${seconds}s.`);
+            clearInterval(intervalId);
+        })
         .catch((e) => {
             console.log(e.message);
             process.exit(1);
