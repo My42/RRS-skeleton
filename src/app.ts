@@ -1,4 +1,6 @@
 import Options from './enums/Options';
+import { isUndefined } from 'lodash';
+import getHelp from './getHelp';
 import {
     createReactApp,
     updateSkeleton,
@@ -20,11 +22,8 @@ async function asyncForEach<T>(array : T[], cb : (T) => void) : Promise<void> {
     await asyncForEach(array.slice(1), cb);
 }
 
-if (options.some(option => option === Options.HELP)) {
-    console.log(`Usage: node app.js APP_NAME PATH [OPTIONS]
-Create a skeleton of a react project ready for hacking with redux & saga configured
-        --help      display this help and exit
-    `);
+if (isUndefined(appName) || isUndefined(path) || options.some(option => option === Options.HELP)) {
+    console.log(getHelp());
 } else {
     const appPath : string = `${path}/${appName}`;
     let seconds : number = 0;
