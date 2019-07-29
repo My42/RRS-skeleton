@@ -7,12 +7,23 @@
   "author": "<vincent.mesquita@epitech.eu>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node src/app.js"
+    "start": "tsc && node src/app.js",
+    "test": "node_modules/mocha/bin/mocha -r ts-node/register test/**/*.ts"
   },
   "dependencies": {
     "@types/lodash": "^4.14.136",
     "@types/node": "^12.6.8",
     "handlebars": "^4.1.2",
     "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0",
+    "typings": "^2.1.1"
   }
 }
