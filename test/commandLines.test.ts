@@ -1,8 +1,9 @@
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
-import exec, { cp } from '../src/CommandLines';
-import { readFile as _readFile, unlink } from 'fs';
-import { promisify } from 'util';
+import exec, {cp, yarn} from '../src/CommandLines';
+import {readFile as _readFile, unlink} from 'fs';
+import {promisify} from 'util';
+import YarnCommands from "../src/enums/YarnCommands";
 
 const { expect } = chai;
 const readFile = promisify(_readFile);
@@ -40,5 +41,25 @@ describe('cp command', () => {
         const tmpPath = 'tmp';
 
         return expect(cp(srcPath, tmpPath)).to.be.rejectedWith(Error);
+    });
+});
+
+describe('yarn command', () => {
+    const dependencyName = 'is-obj';
+
+    it('should give the version', async () => {
+        await yarn(YarnCommands.VERSION, [], './');
+    });
+
+    it('should add a dependency', async () => {
+        await yarn(YarnCommands.ADD, [dependencyName], './');
+        const { dependencies } = JSON.parse(await readFile('package.json', 'utf8'));
+        return expect(dependencies).to.include.all.keys(['is-obj']);
+    });
+
+    it('should remove a dependency', async () => {
+        await yarn(YarnCommands.REMOVE, [dependencyName], './');
+        const { dependencies } = JSON.parse(await readFile('package.json', 'utf8'));
+        return expect(dependencies).to.not.include.all.keys(['is-obj']);
     });
 });
