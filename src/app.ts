@@ -1,6 +1,7 @@
 import Options from './enums/Options';
 import { isUndefined } from 'lodash';
 import getHelp from './getHelp';
+import asyncForEach from './utils/asyncForEach';
 import {
     createReactApp,
     updateSkeleton,
@@ -15,12 +16,6 @@ const isAnOption = arg => arg.startsWith('--');
 const options = process.argv.filter(isAnOption);
 
 const [appName, path] = process.argv.filter(arg => !isAnOption(arg)).slice(2);
-
-async function asyncForEach<T>(array : T[], cb : (T) => void) : Promise<void> {
-    if (array.length === 0) return;
-    await cb(array[0]);
-    await asyncForEach(array.slice(1), cb);
-}
 
 if (isUndefined(appName) || isUndefined(path) || options.some(option => option === Options.HELP)) {
     console.log(getHelp());
