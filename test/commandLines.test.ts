@@ -1,6 +1,6 @@
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
-import exec, { cp, yarn, createReactApp, mkdir } from '../src/CommandLines';
+import exec, { cp, yarn, mkdir } from '../src/CommandLines';
 import { readFile as _readFile, unlink } from 'fs';
 import { promisify } from 'util';
 import YarnCommands from "../src/enums/YarnCommands";
@@ -61,14 +61,6 @@ describe('yarn command', () => {
         await yarn(YarnCommands.REMOVE, [dependencyName], './');
         const { dependencies } = JSON.parse(await readFile('package.json', 'utf8'));
         return expect(dependencies).to.not.include.all.keys(['is-obj']);
-    });
-});
-
-describe('createReactApp command', () => {
-    it('should create a reactApp directory', async function () {
-        this.timeout(60000);
-        await expect(createReactApp('tmp', './')).to.not.be.rejectedWith(Error);
-        return exec('rm -rf ./tmp');
     });
 });
 
