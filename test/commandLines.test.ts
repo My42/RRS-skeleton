@@ -1,6 +1,6 @@
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
-import exec, { cp, yarn, createReactApp } from '../src/CommandLines';
+import exec, { cp, yarn, createReactApp, mkdir } from '../src/CommandLines';
 import { readFile as _readFile, unlink } from 'fs';
 import { promisify } from 'util';
 import YarnCommands from "../src/enums/YarnCommands";
@@ -69,5 +69,23 @@ describe('createReactApp command', () => {
         this.timeout(60000);
         await expect(createReactApp('tmp', './')).to.not.be.rejectedWith(Error);
         return exec('rm -rf ./tmp');
+    });
+});
+
+describe('mkdir command', () => {
+    it('should create 1 directories', async () => {
+        await mkdir(['tmp']);
+        const { stdout } = await exec('ls');
+        const directories = stdout.split('\n');
+        await exec('rm -rf ./tmp');
+        return expect(directories).to.include.members(['tmp']);
+    });
+
+    it('should create 2 directories', async () => {
+        await mkdir(['tmp', 'tmp2']);
+        const { stdout } = await exec('ls');
+        const directories = stdout.split('\n');
+        await exec('rm -rf ./tmp ./tmp2');
+        return expect(directories).to.include.members(['tmp', 'tmp2']);
     });
 });
