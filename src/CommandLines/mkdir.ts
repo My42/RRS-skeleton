@@ -1,21 +1,16 @@
-import { platform } from 'os';
-import exec from './exec';
+import { mkdir as _mkdir } from 'fs';
+import { promisify } from 'util';
 import { CommandLineException } from '../exceptions';
+import asyncForEach from '../utils/asyncForEach';
 
-const mkdir = async (directories : string[]) => {
+const mkdir = promisify(_mkdir);
+
+const mkdirCommand = async (directories : string[]) => {
     try {
-        const tmp = directories.map(dir => `"${dir}"`);
-
-        switch (platform()) {
-            case 'win32':
-                await exec(`md ${tmp.join(' ')}`);
-                break;
-            default:
-                await exec(`mkdir ${tmp.join(' ')}`);
-        }
+        await asyncForEach(directories, async (dir) => mkdir(dir));
     } catch (e) {
         throw new CommandLineException(e.message);
     }
 };
 
-export default mkdir;
+export default mkdirCommand;
