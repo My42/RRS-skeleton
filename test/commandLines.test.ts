@@ -48,7 +48,7 @@ describe('yarn command', () => {
     const dependencyName = 'is-obj';
 
     it('should give the version', async () => {
-        await yarn(YarnCommands.VERSION, [], './');
+        return yarn(YarnCommands.VERSION, [], './');
     });
 
     it('should add a dependency', async () => {
