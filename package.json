@@ -1,7 +1,7 @@
 {
-  "name": "create-RRS-project",
+  "name": "rrs_skeleton",
   "version": "1.0.0",
-  "description": "It Helps you to create a React.js project form scratch with Redux and Saga configured.",
+  "description": "Create the skeleton of a React.js app and configure redux and saga\n\n",
   "main": "src/app.ts",
   "repository": "git@github.com:My42/create-RRS-project.git",
   "author": "<vincent.mesquita@epitech.eu>",
