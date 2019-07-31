@@ -1,4 +1,4 @@
-# create-RRS-project
+# RRS-skeleton
 Create the skeleton of a React.js app and configure redux and saga
 
 # Usage
@@ -22,3 +22,4 @@ $ npm test
 ```
 ## Todo
 * Add [Typescript](https://www.typescriptlang.org/) support
+* Add posibilty to choose the package manage (npm, or yarn)
