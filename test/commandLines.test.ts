@@ -1,8 +1,8 @@
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import exec, { cp, yarn, createReactApp } from '../src/CommandLines';
-import {readFile as _readFile, unlink} from 'fs';
-import {promisify} from 'util';
+import { readFile as _readFile, unlink } from 'fs';
+import { promisify } from 'util';
 import YarnCommands from "../src/enums/YarnCommands";
 
 const { expect } = chai;
