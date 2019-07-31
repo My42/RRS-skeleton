@@ -65,7 +65,7 @@ describe('yarn command', () => {
 });
 
 describe('createReactApp command', () => {
-    it('should not throw an error', async function () {
+    it('should create a reactApp directory', async function () {
         this.timeout(60000);
         await expect(createReactApp('tmp', './')).to.not.be.rejectedWith(Error);
         return exec('rm -rf ./tmp');
