@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc && node src/app.js",
-    "test": "node_modules/mocha/bin/mocha -r ts-node/register test/**/*.ts",
+    "test": "node node_modules/mocha/bin/mocha -r ts-node/register test/**/*.ts",
     "help": "tsc && node src/app.js --help"
   },
   "dependencies": {
