@@ -15,8 +15,11 @@ before(() => {
 
 describe('Exec command', () => {
     it('should return a CommandLineResult', async () => {
-        const result = await exec('ls');
+        const message = 'Hello World';
+
+        const result = await exec(`echo ${message}`);
         expect(result).to.have.all.keys(['stdout', 'stderr']);
+        expect(result.stdout).to.be.equal(`${message}\r\n`);
     });
 
     it('should throw an error when the command is bad', async () => {
