@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "@types/command-exists": "^1.2.0",
+    "@types/fs-extra": "^8.0.0",
     "@types/lodash": "^4.14.136",
     "@types/node": "^12.6.8",
     "command-exists": "^1.2.8",
-    "handlebars": "^4.1.2",
+    "fs-extra": "^8.1.0",
+    "handlebar": "^4.1.2",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
