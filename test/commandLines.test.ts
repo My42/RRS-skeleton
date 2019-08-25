@@ -1,12 +1,14 @@
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import exec, { cp, yarn, mkdir } from '../src/CommandLines';
-import { readFile as _readFile, unlink } from 'fs';
+import { readFile as _readFile, unlink,readdir as _readdir } from 'fs';
+import { remove } from 'fs-extra';
 import { promisify } from 'util';
 import YarnCommands from "../src/enums/YarnCommands";
 
 const { expect } = chai;
 const readFile = promisify(_readFile);
+const readdir = promisify(_readdir);
 
 before(() => {
     chai.should();
@@ -70,17 +72,16 @@ describe('yarn command', () => {
 describe('mkdir command', () => {
     it('should create 1 directories', async () => {
         await mkdir(['tmp']);
-        const { stdout } = await exec('ls');
-        const directories = stdout.split('\n');
-        await exec('rm -rf ./tmp');
-        return expect(directories).to.include.members(['tmp']);
+        const files = await readdir('./');
+        await remove('./tmp');
+        return expect(files).to.include.members(['tmp']);
     });
 
     it('should create 2 directories', async () => {
         await mkdir(['tmp', 'tmp2']);
-        const { stdout } = await exec('ls');
-        const directories = stdout.split('\n');
-        await exec('rm -rf ./tmp ./tmp2');
-        return expect(directories).to.include.members(['tmp', 'tmp2']);
+        const files = await readdir('./');
+        await remove('./tmp');
+        await remove('./tmp2');
+        return expect(files).to.include.members(['tmp', 'tmp2']);
     });
 });
